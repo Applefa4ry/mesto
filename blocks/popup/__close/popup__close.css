@@ -7,6 +7,10 @@
   right:calc(50% - 249px);
   top:calc(50% - 206px);
   transition: filter 300ms ease-in-out;
+  background-image: url(../../../images/close-icon.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .popup__close:hover{
@@ -16,7 +20,9 @@
 
 @media all and (max-width:767px) {
   .popup__close{
-    right:calc(50% - 180px);
-    top:calc(50% - 200px);
+    width: 20px;
+    height: 20px;
+    right:calc(50% - 140px);
+    top:calc(50% - 190px);
   }
 }
