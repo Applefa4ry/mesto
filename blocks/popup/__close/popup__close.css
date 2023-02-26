@@ -1,0 +1,15 @@
+.popup__close{
+  position: fixed;
+  border: none;
+  background: none;
+  height: 32px;
+  width: 32px;
+  right:calc(50% - 249px);
+  top:calc(50% - 206px);
+  transition: filter 300ms ease-in-out;
+}
+
+.popup__close:hover{
+  filter: opacity(50%);
+  cursor: pointer;
+}

@@ -1,0 +1,15 @@
+.footer{
+  width: 880px;
+}
+
+@media all and (max-width:1023px) {
+  .footer{
+    width: 728px;
+  }
+}
+
+@media all and (max-width:767px) {
+  .footer{
+    width: 100%;
+  }
+}

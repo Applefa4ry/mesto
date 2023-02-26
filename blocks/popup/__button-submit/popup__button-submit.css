@@ -1,0 +1,35 @@
+.popup__button-submit{
+  display: block;
+  margin-top: 18px;
+  width: 358px;
+  height: 50px;
+  box-sizing: border-box;
+  padding-top: 14px;
+  padding-bottom: 18px;
+  background-color: black;
+  border: none;
+  border-radius: 2px;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0em;
+  transition: filter 300ms ease-in-out;
+}
+
+.popup__button-submit:hover{
+  filter: opacity(50%);
+  cursor: pointer;
+}
+
+@media all and (max-width:767px) {
+  .popup__button-submit{
+    width: 238px;
+    height: 46px;
+    margin-top: 0;
+  }
+}
+
