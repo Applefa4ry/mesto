@@ -1,16 +1,17 @@
 .content{
-  width: 880px;
+  max-width: 880px;
+  width: 100%;
   margin-bottom: 51px;
 }
 
 @media all and (max-width:1023px) {
   .content{
-    width: 728px;
+    max-width: 728px;
   }
 }
 
-@media all and (max-width:767px) {
+/* @media all and (max-width:767px) {
   .content{
-    width: 100%;
+    max-width: 100%;
   }
-}
+} */
