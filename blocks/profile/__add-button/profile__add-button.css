@@ -5,6 +5,10 @@
   border: 2px solid #FFFFFF;
   padding-top: 5px;
   transition: filter 300ms ease-in-out;
+  background-image: url(../../../images/add-button.svg);
+  background-position: center;
+  background-size: 22px 22px;
+  background-repeat: no-repeat;
 }
 
 .profile__add-button:hover{
@@ -15,5 +19,7 @@
 @media all and (max-width:767px) {
   .profile__add-button{
     width: 100%;
+    margin-top: -10px;
+    background-size: 16px 16px;
   }
 }

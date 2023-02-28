@@ -1,9 +1,11 @@
 .profile__edit-button{
   background: none;
   border: 1px solid white;
-  position: absolute;
-  right: -35px;
-  top:13px;
+  margin-right: auto;
+  position: relative;
+  float: right;
+  top: 16px;
+  left: 19px;
   width: 24px;
   height: 24px;
   padding-top: 2px;
@@ -23,12 +25,10 @@
   .profile__edit-button{
     height: 18px;
     width: 18px;
-    right: -25px;
-    top: 8px;
     background-size: 8px 8px;
-    background-image: url(../../../images/edit-button.svg);
-    background-repeat: no-repeat;
-    background-position: center;
+    top:10px;
+    margin-left:-10px;
+    left: 23px;
   }
 }
 

@@ -3,13 +3,13 @@
   background: none;
   display: block;
   padding: 0;
-  margin: 0;
-  position: absolute;
-  right: 20px;
-  top: 25px;
+  margin: 0 22px 0 0;
   transition: filter 300ms ease-in-out;
   width: 22px;
   height: 19px;
+  background-image: url(../../../images/heart.svg);
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .card__like:hover{
