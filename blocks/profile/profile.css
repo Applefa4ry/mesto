@@ -1,6 +1,6 @@
 .profile{
   width: 100%;
-  min-height: 120px;
+  /* min-height: 120px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,7 +10,7 @@
 @media all and (max-width:767px) {
   .profile{
     width: calc(100% - 38px);
-    min-height: 286px;
+    /* min-height: 286px; */
     margin-left: 19px;
     margin-right: 19px;
     box-sizing: border-box;

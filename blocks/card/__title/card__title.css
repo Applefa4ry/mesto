@@ -11,3 +11,9 @@
   overflow: hidden;
   max-width: 190px;
 }
+
+@media all and (max-width:767px) {
+  .card__title{
+    margin-bottom: 19px;
+  }
+}

@@ -1,4 +1,4 @@
-.popup__field{
+.form__field{
   border-radius: 0;
   border: none;
   height: 27px;
@@ -17,7 +17,7 @@
 }
 
 @media all and (max-width:767px) {
-  .popup__field{
+  .form__field{
     font-size: 14px;
     text-align: left;
   }

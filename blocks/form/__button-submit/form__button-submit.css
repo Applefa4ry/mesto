@@ -1,4 +1,4 @@
-.popup__button-submit{
+.form__button-submit{
   display: block;
   margin-top: 18px;
   width: 358px;
@@ -19,13 +19,13 @@
   transition: filter 300ms ease-in-out;
 }
 
-.popup__button-submit:hover{
+.form__button-submit:hover{
   filter: opacity(50%);
   cursor: pointer;
 }
 
 @media all and (max-width:767px) {
-  .popup__button-submit{
+  .form__button-submit{
     width: 238px;
     height: 46px;
     margin-top: 0;
