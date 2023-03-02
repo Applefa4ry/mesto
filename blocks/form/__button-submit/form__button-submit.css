@@ -20,7 +20,7 @@
 }
 
 .form__button-submit:hover{
-  filter: opacity(50%);
+  filter: opacity(80%);
   cursor: pointer;
 }
 

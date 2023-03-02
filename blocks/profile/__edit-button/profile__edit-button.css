@@ -17,7 +17,7 @@
 }
 
 .profile__edit-button:hover{
-  filter: opacity(50%);
+  filter: opacity(60%);
   cursor: pointer;
 }
 
