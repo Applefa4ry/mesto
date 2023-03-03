@@ -6,16 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
-    <script defer src="./scripts/script.js"></script>
   </head>
   <body class="body">
     <div class="page">
-      <div class="popup">
+
+      <div id="edit-profile" class="popup">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
           <form name="edit-profile" class="form">
-            <input name="name" class="form__field" value="Жак-Ив Кусто" type="text">
-            <input name="about" class="form__field" value="Исследователь океана" type="text">
+            <input id="edit-name" required placeholder="Имя" name="name" class="form__field" value="Жак-Ив Кусто" type="text">
+            <input id="edit-job" required placeholder="Работа" name="about" class="form__field" value="Исследователь океана" type="text">
             <button type="submit" class="form__button-submit">Сохранить</button>
           </form>
         </div>
@@ -24,12 +24,12 @@
         </button>
       </div>
 
-      <div class="popup">
+      <div id="edit-place" class="popup">
         <div class="popup__container">
           <h2 class="popup__title">Новое место</h2>
           <form name="edit-profile" class="form">
-            <input name="name" class="form__field" value="Название" type="text">
-            <input name="about" class="form__field" value="Ссылка на картинку" type="text">
+            <input id="edit-title" required name="name" class="form__field" placeholder="Название" type="text">
+            <input id="edit-url" required name="about" class="form__field" placeholder="Ссылка на картинку" type="url">
             <button type="submit" class="form__button-submit">Сохранить</button>
           </form>
         </div>
@@ -38,13 +38,13 @@
         </button>
       </div>
 
-      <div class="popup">
+      <div id="edit-picture" class="popup">
         <figure class="picture">
           <button type="button" class="picture__close">
             <!-- <img src="./images/close-icon.png" alt=""> -->
           </button>
-          <img class="picture__image" src="#" alt="#">
-          <figcaption class="picture__title"></figcaption>
+          <img id="picture-img" class="picture__image" src="#" alt="#">
+          <figcaption id="picture-title" class="picture__title"></figcaption>
         </figure>
       </div>
       
@@ -67,71 +67,7 @@
           </button>
         </section>
         <section class="cards">
-          <figure class="card">
-            <img class="card__image" src="./images/karachevsk.jpg" alt="Карачеевск">
-            <figcaption class="card__about">
-              <h2 class="card__title">Карачаевск</h2>
-              <button type="button" class="card__like">
-                <!-- <img src="./images/heart.svg" alt=""> -->
-              </button>
-            </figcaption>
-            <button type="button" class="card__trash"></button>
-          </figure>
 
-          <figure class="card">
-            <img class="card__image" src="./images/elbrus.jpg" alt="Эльбрус">
-            <figcaption class="card__about">
-              <h2 class="card__title">Гора Эльбрус</h2>
-              <button type="button" class="card__like">
-                <!-- <img src="./images/heart.svg" alt=""> -->
-              </button>
-            </figcaption>
-            <button type="button" class="card__trash"></button>
-          </figure>
-
-          <figure class="card">
-            <img class="card__image" src="./images/dombay.jpg" alt="Домбай">
-            <figcaption class="card__about">
-              <h2 class="card__title">Домбай</h2>
-              <button type="button" class="card__like">
-                <!-- <img src="./images/heart.svg" alt=""> -->
-              </button>
-            </figcaption>
-            <button type="button" class="card__trash"></button>
-          </figure>
-
-          <figure class="card">
-            <img class="card__image" src="./images/elbrus.jpg" alt="Эльбрус">
-            <figcaption class="card__about">
-              <h2 class="card__title">Гора Эльбрус</h2>
-              <button type="button" class="card__like">
-                <!-- <img src="./images/heart.svg" alt=""> -->
-              </button>
-            </figcaption>
-            <button type="button" class="card__trash"></button>
-          </figure>
-
-          <figure class="card">
-            <img class="card__image" src="./images/dombay.jpg" alt="Домбай">
-            <figcaption class="card__about">
-              <h2 class="card__title">Домбай</h2>
-              <button type="button" class="card__like">
-                <!-- <img src="./images/heart.svg" alt=""> -->
-              </button>
-            </figcaption>
-            <button type="button" class="card__trash"></button>
-          </figure>
-
-          <figure class="card">
-            <img class="card__image" src="./images/karachevsk.jpg" alt="Эльбрус">
-            <figcaption class="card__about">
-              <h2 class="card__title">Карачаево-Черкессия</h2>
-              <button type="button" class="card__like">
-                <!-- <img src="./images/heart.svg" alt=""> -->
-              </button>
-            </figcaption>
-            <button type="button" class="card__trash"></button>
-          </figure>
         </section>
       </main>
       <footer class="footer">
@@ -151,6 +87,7 @@
         <button type="button" class="card__trash"></button>
       </figure>
     </template>
-
+    <script src="./scripts/cards.js"></script>
+    <script src="./scripts/script.js"></script>
   </body>
 </html>
