@@ -119,7 +119,7 @@ card.forEach(function(element){
   });
   element.querySelector(".card__trash").addEventListener("click", removeCard);
   element.addEventListener("click", function(evt){
-    if(evt.target !== element.querySelector(".card__trash") && evt.target !== cardElement.querySelector(".card__like")){
+    if(evt.target !== element.querySelector(".card__trash") && evt.target !== element.querySelector(".card__like")){
       openPopUp(popups[2]);
       fillPopupPicture(element);
     }
