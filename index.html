@@ -23,6 +23,31 @@
           <!-- <img src="./images/close-icon.png" alt=""> -->
         </button>
       </div>
+
+      <div class="popup">
+        <div class="popup__container">
+          <h2 class="popup__title">Новое место</h2>
+          <form name="edit-profile" class="form">
+            <input name="name" class="form__field" value="Название" type="text">
+            <input name="about" class="form__field" value="Ссылка на картинку" type="text">
+            <button type="submit" class="form__button-submit">Сохранить</button>
+          </form>
+        </div>
+        <button type="button" class="popup__close">
+          <!-- <img src="./images/close-icon.png" alt=""> -->
+        </button>
+      </div>
+
+      <div class="popup">
+        <figure class="picture">
+          <button type="button" class="picture__close">
+            <!-- <img src="./images/close-icon.png" alt=""> -->
+          </button>
+          <img class="picture__image" src="#" alt="#">
+          <figcaption class="picture__title"></figcaption>
+        </figure>
+      </div>
+      
       <header class="header">
         <img class="header__logo" src="./images/mesto-logo.svg" alt="Логотип Mesti">
       </header>
@@ -50,6 +75,7 @@
                 <!-- <img src="./images/heart.svg" alt=""> -->
               </button>
             </figcaption>
+            <button type="button" class="card__trash"></button>
           </figure>
 
           <figure class="card">
@@ -60,6 +86,7 @@
                 <!-- <img src="./images/heart.svg" alt=""> -->
               </button>
             </figcaption>
+            <button type="button" class="card__trash"></button>
           </figure>
 
           <figure class="card">
@@ -70,6 +97,7 @@
                 <!-- <img src="./images/heart.svg" alt=""> -->
               </button>
             </figcaption>
+            <button type="button" class="card__trash"></button>
           </figure>
 
           <figure class="card">
@@ -80,6 +108,7 @@
                 <!-- <img src="./images/heart.svg" alt=""> -->
               </button>
             </figcaption>
+            <button type="button" class="card__trash"></button>
           </figure>
 
           <figure class="card">
@@ -90,6 +119,7 @@
                 <!-- <img src="./images/heart.svg" alt=""> -->
               </button>
             </figcaption>
+            <button type="button" class="card__trash"></button>
           </figure>
 
           <figure class="card">
@@ -100,6 +130,7 @@
                 <!-- <img src="./images/heart.svg" alt=""> -->
               </button>
             </figcaption>
+            <button type="button" class="card__trash"></button>
           </figure>
         </section>
       </main>
@@ -107,5 +138,19 @@
         <p class="footer__copyright">© 2020 Mesto Russia</p>
       </footer>
     </div>
+
+    <template id="card-template">
+      <figure class="card">
+        <img class="card__image" src="#" alt="#">
+        <figcaption class="card__about">
+          <h2 class="card__title"></h2>
+          <button type="button" class="card__like">
+            <!-- <img src="./images/heart.svg" alt=""> -->
+          </button>
+        </figcaption>
+        <button type="button" class="card__trash"></button>
+      </figure>
+    </template>
+
   </body>
 </html>

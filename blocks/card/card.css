@@ -4,6 +4,11 @@
   background-color: white;
   border-radius: 10px;
   padding-bottom: 4px;
+  position: relative;
+}
+
+.card:hover{
+  cursor: pointer;
 }
 
 @media all and (max-width:767px) {
