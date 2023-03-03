@@ -136,4 +136,21 @@ closeButtons.forEach(function(element , key){
 formElement[0].addEventListener('submit', handleFormEditProfileSubmit);
 formElement[1].addEventListener('submit', addCard);
 
+//ПР6
+
+document.addEventListener("keyup", function(evt){
+  if(evt.key === "Escape"){
+    popups.forEach(element => closePopUp(element));
+    console.log(evt.key);
+  };
+});
+
+popups.forEach(element => {
+  element.addEventListener("click", function(evt){
+    if(element.isEqualNode(evt.target)){
+      closePopUp(element);
+    }
+  });
+});
+
 

@@ -14,9 +14,11 @@
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
           <form name="edit-profile" class="form">
-            <input id="edit-name" required placeholder="Имя" name="name" class="form__field" value="Жак-Ив Кусто" type="text">
-            <input id="edit-job" required placeholder="Работа" name="about" class="form__field" value="Исследователь океана" type="text">
-            <button type="submit" class="form__button-submit">Сохранить</button>
+            <input id="edit-name" minlength="2" maxlength="40" required placeholder="Имя" name="name" class="form__field" value="Жак-Ив Кусто" type="text">
+            <span class="popup__error edit-name-error"></span>
+            <input id="edit-job" minlength="2" maxlength="200" required placeholder="Работа" name="about" class="form__field" value="Исследователь океана" type="text">
+            <span class="popup__error edit-job-error"></span>
+            <button type="submit" class="form__button-submit popup__button_disabled">Сохранить</button>
           </form>
         </div>
         <button type="button" class="popup__close">
@@ -28,9 +30,11 @@
         <div class="popup__container">
           <h2 class="popup__title">Новое место</h2>
           <form name="edit-profile" class="form">
-            <input id="edit-title" required name="name" class="form__field" placeholder="Название" type="text">
+            <input id="edit-title" minlength="1" maxlength="30" required name="name" class="form__field" placeholder="Название" type="text">
+            <span class="popup__error edit-title-error"></span>
             <input id="edit-url" required name="about" class="form__field" placeholder="Ссылка на картинку" type="url">
-            <button type="submit" class="form__button-submit">Сохранить</button>
+            <span class="popup__error edit-url-error"></span>
+            <button type="submit" class="form__button-submit popup__button_disabled">Сохранить</button>
           </form>
         </div>
         <button type="button" class="popup__close">
@@ -89,5 +93,7 @@
     </template>
     <script src="./scripts/cards.js"></script>
     <script src="./scripts/script.js"></script>
+    <!--ПР6-->
+    <script src="./scripts/validate.js"></script> 
   </body>
 </html>
