@@ -7,8 +7,8 @@ const showInputError = (formElement, inputElement, errorMessage, form) => {
 
 const hideInputError = (formElement, inputElement, form) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove(form.errorClass);
-  errorElement.classList.remove(form.inputErrorClass);
+  inputElement.classList.remove(form.inputErrorClass);
+  errorElement.classList.remove(form.errorClass);
   errorElement.textContent = '';
 };
 
