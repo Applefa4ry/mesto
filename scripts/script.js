@@ -143,7 +143,11 @@ formElements[1].addEventListener('submit', addCard);
 
 document.addEventListener("keyup", function(evt){
   if(evt.key === "Escape"){
-    popups.forEach(element => closePopUp(element));
+    popups.forEach((element, index) => {
+      if(element.classList.contains("popup_opened")){
+        closePopUp(popups[index]);
+      }
+    });
     console.log(evt.key);
   };
 });
