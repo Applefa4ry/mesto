@@ -35,9 +35,9 @@ const setEventListeners = (formElement, form) => {
 const enableValidation = (form) => {
   const formList = Array.from(document.querySelectorAll(form.formSelector));
   formList.forEach((formElement) => {
-    formElement.addEventListener('submit', function (evt) {
-      evt.preventDefault();
-    });
+    // formElement.addEventListener('submit', function (evt) {
+    //   evt.preventDefault();
+    // });
     setEventListeners(formElement, form);
     // const fieldsetList = Array.from(formElement.querySelectorAll(".form__set"));
     // fieldsetList.forEach(formElement => setEventListeners(formElement))
@@ -51,9 +51,11 @@ function hasInvalidInput(inputList){
 function toggleButtonState(inputList, buttonElement, form){
   if(hasInvalidInput(inputList)){
     buttonElement.classList.add(form.inactiveButtonClass);
+    buttonElement.setAttribute("disabled", "disabled");
   }
   else{
     buttonElement.classList.remove(form.inactiveButtonClass);
+    buttonElement.removeAttribute("disabled");
   }
 }
 enableValidation({
