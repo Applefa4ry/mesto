@@ -68,14 +68,14 @@
 // });
 
 class FormValidator{
-  constructor(formName, data){
+  constructor(data, selectedForm){
     this._formSelector = data.formSelector;
     this._inputSelector = data.inputSelector;
     this._submitButtonSelector = data.submitButtonSelector;
     this._inactiveButtonClass = data.inactiveButtonClass;
     this._inputErrorClass = data.inputErrorClass;
     this._errorClass = data.errorClass;
-    this._formName = formName;
+    this._selectedForm = selectedForm;
   }
 
   _showInputError = (inputElement, errorMessage) => {
@@ -114,13 +114,13 @@ class FormValidator{
     });
   };
 
-  _hideInput(inputElement){
-    inputElement.value = "";
-  }
+  // _hideInput(inputElement){
+  //   inputElement.value = "";
+  // }
 
   resetValidation() {
     this._inputList.forEach((inputElement) => {
-      this._hideInput(inputElement);
+      // this._hideInput(inputElement);
       this._hideInputError(inputElement)
     });
     this._toggleButtonState();
@@ -128,8 +128,8 @@ class FormValidator{
 
 
   enableValidation = () => {
-    // this.formList = document.querySelector(this._formSelector);
-    this.formList = document.querySelector(`[name="${this._formName}"]`);
+    this.formList = document.querySelector(this._selectedForm);
+    // this.formList = document.querySelector(`[name="${this._formSelector}"]`);
     this._setEventListeners();
   };
 

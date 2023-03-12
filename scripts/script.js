@@ -36,7 +36,7 @@ const imagePicture = popupFullIImage.querySelector("#picture-img");
 
 const titlePicture = popupFullIImage.querySelector("#picture-title");
 
-const closePicture = document.querySelector(".picture__close");
+// const closePicture = document.querySelector(".picture__close");
 
 const cardsContainer = document.querySelector(".cards");
 
@@ -54,8 +54,8 @@ const config =
     errorClass: 'popup__error_visible'
   }
 
-const formEditProfiile = new FormValidator("edit-profile", config);
-const formAddNewCard = new FormValidator("add-card", config);
+const formEditProfiile = new FormValidator(config, ".editProfile");
+const formAddNewCard = new FormValidator(config, ".addCard");
 
 // const formEditProfiile = new FormValidator('[name="edit-profile"]',{
 
@@ -80,8 +80,9 @@ function openPopUp(element){
 function closePopUp(element){
   document.removeEventListener("keyup", closeByEsc);
   // formValidators[element.getAttribute("name")].resetValidation();
-  formEditProfiile.resetValidation();
-  formAddNewCard.resetValidation();
+  // formEditProfiile.resetValidation();
+  // formAddNewCard.resetValidation();
+  // evt.target.reset();
   element.classList.remove("popup_opened");
 }
 
@@ -96,6 +97,8 @@ function handleFormEditProfileSubmit (evt) {
     const jobValue = jobInput.value;
     nameProfile.textContent = nameValue;
     aboutProfile.textContent = jobValue;
+    // formEditProfiile.resetValidation();
+    evt.target.reset();
     closePopUp(popupProfile);
 }
 
@@ -147,6 +150,7 @@ function addCard(evt){
   const cardElement = createCard(cardData);
 
   cardsContainer.prepend(cardElement);
+  evt.target.reset();
   formAddNewCard.resetValidation();
   closePopUp(popupAddNewCard);
  
@@ -178,6 +182,8 @@ function addCard(evt){
 // }
 
 function openEditProfilePopup(){
+  formEditProfiile.formList.reset();
+  formEditProfiile.resetValidation()
   openPopUp(popupProfile);
   inputFieldFill();
 }
@@ -190,6 +196,7 @@ function closeByEsc(evt){
 };
 
 function handleCardClick(name, link){
+  // formAddNewCard.resetValidation();
   imagePicture.src = link;
   imagePicture.alt = name;
   titlePicture.textContent = name;
@@ -230,12 +237,14 @@ const renderElements = () => {
 editButton.addEventListener("click", openEditProfilePopup);
 
 addButton.addEventListener("click", function(){
+  formAddNewCard.formList.reset();
+  formAddNewCard.resetValidation();
   openPopUp(popupAddNewCard);
 });
 
-closePicture.addEventListener("click", function(){
-  closePopUp(popupFullIImage);
-})
+// closePicture.addEventListener("click", function(){
+//   closePopUp(popupFullIImage);
+// })
 
 closeButtons.forEach(element => {
   const buttonsPopup = element.closest(".popup");

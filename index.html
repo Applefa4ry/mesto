@@ -13,7 +13,7 @@
       <div id="edit-profile" class="popup">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form name="edit-profile" class="form" novalidate>
+          <form name="edit-profile" class="form editProfile" novalidate>
             <input id="edit-name" minlength="2" maxlength="40" required placeholder="Имя" name="name" class="form__field" value="Жак-Ив Кусто" type="text">
             <span class="popup__error edit-name-error"></span>
             <input id="edit-job" minlength="2" maxlength="200" required placeholder="Работа" name="about" class="form__field" value="Исследователь океана" type="text">
@@ -29,7 +29,7 @@
       <div id="edit-place" class="popup">
         <div class="popup__container">
           <h2 class="popup__title">Новое место</h2>
-          <form name="add-card" class="form" novalidate>
+          <form name="add-card" class="form addCard" novalidate>
             <input id="edit-title" minlength="2" maxlength="30" required name="name" class="form__field" placeholder="Название" type="text">
             <span class="popup__error edit-title-error"></span>
             <input id="edit-url" required name="about" class="form__field" placeholder="Ссылка на картинку" type="url">
@@ -44,7 +44,7 @@
 
       <div id="edit-picture" class="popup">
         <figure class="picture">
-          <button type="button" class="picture__close">
+          <button type="button" class="popup__close picture__close">
             <!-- <img src="./images/close-icon.png" alt=""> -->
           </button>
           <img id="picture-img" class="picture__image" src="#" alt="#">
