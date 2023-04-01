@@ -67,7 +67,7 @@
 //   errorClass: 'popup__error_visible'
 // });
 
-class FormValidator{
+export default class FormValidator{
   constructor(data, selectedForm){
     this._formSelector = data.formSelector;
     this._inputSelector = data.inputSelector;
@@ -154,4 +154,4 @@ class FormValidator{
 
 }
 
-export {FormValidator}
+
