@@ -13,8 +13,7 @@ export default class PopupWithForm extends Popup{
   }
 
   open = (data) => {
-    this._popup.classList.add("popup_opened");
-    document.addEventListener("keyup", this._handleEscClose)
+    super.open();
     this._form.querySelectorAll("input").forEach((element,index) => {
       if(data[index] !== undefined) element.value =  data[index];
     })
@@ -26,13 +25,7 @@ export default class PopupWithForm extends Popup{
   }
 
   setEventListeners(){
-    this._popup.querySelector(".popup__close").addEventListener("click", this.close);
-    const closeBackground = this.close;
-    this._popup.addEventListener("click", function(evt){
-      if(this === evt.target){
-        closeBackground();
-      }
-    })
+    super.setEventListeners()
     this._form.addEventListener("submit", (evt) => this._callback(this._getInputValues(), evt))
   }
 }

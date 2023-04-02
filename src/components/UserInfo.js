@@ -6,9 +6,8 @@ export default class UserInfo {
 
   getUserInfo(){
     if(this._name.textContent !== "" && this._about !== ""){
-      return [this._name.textContent, this._about.textContent]
+      return {0: this._name.textContent, 1: this._about.textContent}
     }
-    return 0
   }
 
   setUserInfo([name, about]){
