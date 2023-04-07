@@ -18,7 +18,9 @@
 @media (max-width:767px){.header__logo{height:24px;margin-left:27px}}
 .content{margin-bottom:51px;max-width:880px;width:100%}@media (max-width:1023px){.content{max-width:728px}}
 .profile{align-items:center;display:flex;justify-content:space-between;margin-bottom:51px;width:100%}@media (max-width:767px){.profile{align-items:center;box-sizing:border-box;flex-direction:column;justify-content:flex-start;margin-bottom:33px;margin-left:19px;margin-right:19px;width:calc(100% - 38px)}}
-.profile__avatar{border-radius:50%;height:120px}@media (max-width:767px){.profile__avatar{height:37vw;margin-bottom:22.5px}}
+.profile__overlay{position:relative}
+.profile__avatar{border-radius:50%;display:block;height:120px}@media (max-width:767px){.profile__avatar{height:37vw;margin-bottom:22.5px}}
+.profile__edit-avatar{background-color:rgba(0,0,0,.8);background-image:url(a086f758840ae814ecde.svg);background-position:50%;background-repeat:no-repeat;background-size:26px 26px;border:none;border-radius:50%;cursor:pointer;display:block;height:100%;left:0;opacity:0;position:absolute;top:0;transition:opacity .3s ease-in-out;width:100%}.profile__edit-avatar:hover{opacity:1}
 .profile__info{margin-left:30px;margin-right:23px;max-width:336px;position:relative;right:120px}@media (max-width:1023px){.profile__info{right:50px}}@media (max-width:767px){.profile__info{margin-bottom:43px;margin-left:0;margin-right:0;max-width:282px;right:0}}
 .profile__about{color:#fff;font-size:1.125em;font-weight:400;letter-spacing:0;line-height:18px;margin:0;overflow:hidden;text-align:left;text-overflow:ellipsis;white-space:nowrap}@media (max-width:767px){.profile__about{font-size:.875em;line-height:17px;max-width:calc(100vw - 95px);text-align:center}}
 .profile__edit-button{background:none;background-image:url(8667ac4a523e8fc42e59.svg);background-position:50%;background-repeat:no-repeat;background-size:10px 10px;border:1px solid #fff;float:right;height:24px;left:19px;margin-right:auto;padding-top:2px;position:relative;top:16px;transition:filter .3s ease-in-out;width:24px}.profile__edit-button:hover{cursor:pointer;filter:opacity(60%)}@media (max-width:767px){.profile__edit-button{background-size:8px 8px;height:18px;left:23px;margin-left:-10px;top:10px;width:18px}}
@@ -29,9 +31,10 @@
 .card__image{border-radius:10px 10px 0 0;height:282px;margin-bottom:2px;-o-object-fit:cover;object-fit:cover;width:100%}
 .card__about{align-items:center;display:flex;justify-content:space-between;position:relative}
 .card__title{color:#000;display:inline-block;font-size:1.5em;font-weight:900;letter-spacing:0;line-height:29px;margin-left:19px;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}@media (max-width:767px){.card__title{margin-bottom:19px}}
-.card__like{background:none;background-image:url(87ed371465c7a6a1cd01.svg);background-position:50%;background-repeat:no-repeat;border:none;display:block;height:19px;margin:0 22px 0 0;padding:0;transition:filter .3s ease-in-out;width:22px}.card__like:hover{cursor:pointer;filter:opacity(50%)}
+.card__like{background:none;background-image:url(87ed371465c7a6a1cd01.svg);background-position:50%;background-repeat:no-repeat;border:none;bottom:32px;display:block;height:19px;margin:0;padding:0;position:absolute;right:21px;transition:filter .3s ease-in-out;width:22px}.card__like:hover{cursor:pointer;filter:opacity(50%)}
 .card__like_active{background-image:url(fe17a515669479b1e649.svg)}
-.card__trash{background:none;background-image:url(cbc09a894bdd4c956365.svg);background-position:50%;background-repeat:no-repeat;border:none;display:block;height:19.3px;position:absolute;right:21.28px;top:25.7px;transition:filter .3s ease-in-out;width:18px}.card__trash:hover{cursor:pointer;filter:opacity(60%)}
+.card__like-counter{bottom:13px;font-family:Inter;font-size:13px;font-weight:400;letter-spacing:0;line-height:16px;position:absolute;right:28px;text-align:center}
+.card__trash{background:none;background-image:url(cbc09a894bdd4c956365.svg);background-position:50%;background-repeat:no-repeat;border:none;display:block;height:19.3px;position:absolute;right:15.28px;top:19.7px;transition:filter .3s ease-in-out;width:18px}.card__trash:hover{cursor:pointer;filter:opacity(60%)}
 .footer{max-width:880px;width:100%}@media (max-width:1023px){.footer{max-width:728px}}
 .footer__copyright{color:#545454;font-size:1.125em;font-weight:400;letter-spacing:0;line-height:22px;margin-bottom:60px}@media (max-width:767px){.footer__copyright{font-size:14px;line-height:17px;margin-left:19px;margin-top:0}}
 .form__button-submit_disabled{background:none;border:1px solid #000;color:#000;opacity:.2;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}
