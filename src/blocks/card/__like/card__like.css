@@ -1,9 +1,12 @@
 .card__like{
+  position: absolute;
+  right: 21px;
+  bottom: 32px;
   border: none;
   background: none;
   display: block;
   padding: 0;
-  margin: 0 22px 0 0;
+  margin: 0;
   transition: filter 300ms ease-in-out;
   width: 22px;
   height: 19px;

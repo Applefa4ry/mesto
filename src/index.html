@@ -57,7 +57,10 @@
       </header>
       <main class="content">
         <section class="profile">
-          <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Жак-Ив Кусто">
+          <div class="profile__overlay">
+            <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Жак-Ив Кусто">
+            <button type="button" class="profile__edit-avatar"></button>
+          </div>
           <div class="profile__info">
             <button type="button" class="profile__edit-button">
               <!-- <img src="./images/edit-button.svg" alt=""> -->
@@ -87,6 +90,7 @@
           <button type="button" class="card__like">
             <!-- <img src="./images/heart.svg" alt=""> -->
           </button>
+          <span class="card__like-counter">6</span>
         </figcaption>
         <button type="button" class="card__trash"></button>
       </figure>
