@@ -10,6 +10,11 @@
   padding: 14px 36px 37px 36px;
 }
 
+.popup__container.deletePicture{
+  position: relative;
+  bottom: 75px;
+}
+
 @media all and (max-width:767px) {
   .popup__container{
     width: 282px;

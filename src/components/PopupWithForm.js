@@ -14,9 +14,12 @@ export default class PopupWithForm extends Popup{
 
   open = (data) => {
     super.open();
-    this._form.querySelectorAll("input").forEach((element,index) => {
-      if(data[index] !== undefined) element.value =  data[index];
-    })
+    // this._form.querySelectorAll("input").forEach((element,index) => {
+    //   if(data[index] !== undefined) element.value =  data[index];
+    // })
+    this._formInput = this._form.querySelectorAll("input");
+    if(data.name !== undefined) this._formInput[0].value = data.name;
+    if(data.about !== undefined) this._formInput[1].value = data.about;
   }
 
   _getInputValues(){
