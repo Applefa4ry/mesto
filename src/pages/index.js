@@ -9,6 +9,8 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import '../pages/index.css'
 
+const userServerInfo = {id: 0}
+
 const editButton = document.querySelector(".profile__edit-button");
 
 const addButton = document.querySelector(".profile__add-button");
@@ -52,53 +54,54 @@ const api = new Api({
 }); 
 
 
-const cardSection = new Section({items: [], renderer: createCard}, ".cards")
+const cardSection = new Section({renderer: createCard}, ".cards")
 
 function handleFormEditProfileSubmit (data, evt) {
     evt.preventDefault();
-    popupEditProfile._form.querySelector(".form__button-submit").textContent = "Сохранение...";
-    userInfo.setUserInfo(data);
-    api.setUserInfoOnServer(userInfo.getUserInfo())
-      .then(popupEditProfile.close())
+    console.log(data)
+    evt.submitter.textContent = "Сохранение...";
+    api.setUserInfoOnServer(data)
+      .then(() => {
+        userInfo.setUserInfo(data);
+        popupEditProfile.close()
+      })
       .catch(err => console.log(`Ошибка ${err}`))
-      .finally(() => popupEditProfile._form.querySelector(".form__button-submit").textContent = "Сохранить");
+      .finally(() => evt.submitter.textContent = "Сохранить");
     
 }
 
 function editAvatar(avatar, evt){
   evt.preventDefault();
-  userInfo.setUserAvatar(avatar[0])
-  popupEditAvatar._form.querySelector(".form__button-submit").textContent = "Сохранение..."
-  api.setUserAvatarOnServer(userInfo.getUserAvatar())
-    .then(popupEditAvatar.close())
+  console.log(avatar)
+  evt.submitter.textContent = "Сохранение..."
+  api.setUserAvatarOnServer(avatar.link)
+    .then(() => {
+      userInfo.setUserAvatar(avatar.link)
+      popupEditAvatar.close()
+    })
     .catch(err => console.log(`Ошибка ${err}`))
-    .finally(() => popupEditAvatar._form.querySelector(".form__button-submit").textContent = "Сохранить")
+    .finally(() => evt.submitter.textContent = "Сохранить")
 }
 
 function createCard(cardData){
-  const card = new Card(cardData, "#card-template", popupWithImage.open.bind(popupWithImage), clarifyDeletion, api.toggleLike.bind(api));
+  const card = new Card(cardData, "#card-template", popupWithImage.open.bind(popupWithImage), clarifyDeletion, api._addLike.bind(api),api._deleteLike.bind(api), userServerInfo.id);
   const cardElement = card.generateCard();
   return cardElement;
 }
 
 function addCard(data, evt){
   evt.preventDefault();
-  popupNewPlace._form.querySelector(".form__button-submit").textContent = "Создание..."
-  const cardData = {
-    link: data[1],
-    name: data[0]
-  };
-  api.addNewCard(cardData)
-    .then(res => res.json())
+  evt.submitter.textContent = "Создание..."
+  api.addNewCard(data)
     .then(data => {
       const cardElement = createCard(data);
       cardSection.addItem(cardElement)
-      popupNewPlace.close()
-      validatorAddCard.resetValidation();
     })
+    .then(() => popupNewPlace.close())
     .catch(err => console.log(`Ошибка ${err}`))
-    .finally(() => popupNewPlace._form.querySelector(".form__button-submit").textContent = "Создать")
-    
+    .finally(() => {
+      evt.submitter.textContent = "Создать"
+    })
 }
 
 function deleteCard(card, evt){
@@ -116,9 +119,15 @@ function clarifyDeletion(card){
 
 editButton.addEventListener("click", () => popupEditProfile.open(userInfo.getUserInfo()));
 
-addButton.addEventListener("click", popupNewPlace.open.bind(popupNewPlace))
+addButton.addEventListener("click", () => {
+  validatorAddCard.resetValidation();
+  popupNewPlace.open()
+})
 
-editAvatarButton.addEventListener("click", popupEditAvatar.open.bind(popupEditAvatar));
+editAvatarButton.addEventListener("click", () => {
+  validatorEditAvatar.resetValidation()
+  popupEditAvatar.open();
+});
 
 validatorEditProfile.enableValidation();
 
@@ -136,16 +145,15 @@ popupDelete.setEventListeners();
 
 popupEditAvatar.setEventListeners()
 
-api.getInitialCards()
-  .then(res => {
-    cardSection.setItems(res)
-    cardSection.renderItems()
-  })
-  .catch(err => console.log(`Ошибка ${err}`))
-
-api.getUserInfoFromServer()
-  .then(res => {
-    userInfo.setUserAvatar(res.avatar)
-    userInfo.setUserInfo([res.name, res.about])
-  })
-  .catch(err => console.log(`Ошибка ${err}`))
+Promise.all([                 
+api.getUserInfoFromServer(), 
+api.getInitialCards() ]) 
+.then(([info, initialCards])=>{
+  userServerInfo.id = info._id
+  cardSection.renderItems(initialCards)
+  userInfo.setUserAvatar(info.avatar)
+  userInfo.setUserInfo({name: info.name, about: info.about})
+}) 
+.catch((err)=>{            
+console.log(`Ошибка ${err}`);
+})

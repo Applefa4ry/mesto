@@ -5,146 +5,87 @@ export default class Api {
     this._headers = options.headers
   }
 
+  _getResponseData(res) {
+    if (!res.ok) {
+        return Promise.reject(`Ошибка: ${res.status}`); 
+    }
+    return res.json();
+}
+
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, 
       {  
-        headers: {
-        authorization: '56bd9a91-126f-47c1-94b3-76e6f2e1aa35',
-        'Content-Type': 'application/json'
-      }}
+        headers: this._headers
+    }
     )
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-  
-        // если ошибка, отклоняем промис
-        return Promise.reject(`Ошибка: ${res.status}`);
-      });
+      .then(res => this._getResponseData(res));
   }
 
   getUserInfoFromServer(){
     return fetch(`${this._baseUrl}/users/me`,{
-      headers: {
-        authorization: '56bd9a91-126f-47c1-94b3-76e6f2e1aa35',
-        'Content-Type': 'application/json'
-    }}
-  )
-  .then(res => {
-    if (res.ok) {
-      return res.json();
+      headers: this._headers
     }
-
-    // если ошибка, отклоняем промис
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  )
+  .then(res => this._getResponseData(res));
   }
 
   setUserAvatarOnServer(avatar){
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
-      headers: {
-        authorization: '56bd9a91-126f-47c1-94b3-76e6f2e1aa35',
-        'Content-Type': 'application/json'
-      },
+      headers: this._headers,
       body: JSON.stringify({
         avatar: avatar
       })
     })
-    .then(res => {
-      if(res.ok){
-        return res;
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
+    .then(res => this._getResponseData(res))
   }
 
   setUserInfoOnServer(data){
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
-      headers: {
-        authorization: '56bd9a91-126f-47c1-94b3-76e6f2e1aa35',
-        'Content-Type': 'application/json'
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: data.name,
         about: data.about
       })
     })
-    .then(res => {
-      if(res.ok){
-        return res;
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
+    .then(res => this._getResponseData(res))
   }
 
   addNewCard(data){
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
-      headers: {
-        authorization: '56bd9a91-126f-47c1-94b3-76e6f2e1aa35',
-        'Content-Type': 'application/json'
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: data.name,
         link: data.link
       })
     })
-    .then(res => {
-      if(res.ok){
-        return res;
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })    
+    .then(res => this._getResponseData(res))    
   }
 
   deleteCard(id){
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: 'DELETE',
-      headers: {
-        authorization: '56bd9a91-126f-47c1-94b3-76e6f2e1aa35',
-        'Content-Type': 'application/json'
-      }
+      headers: this._headers
     })
-    .then(res => {
-      if(res.ok){
-        return res;
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })   
+    .then(res => this._getResponseData(res))   
   }
 
   _deleteLike(id){
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: 'DELETE',
-      headers: {
-        authorization: '56bd9a91-126f-47c1-94b3-76e6f2e1aa35',
-        'Content-Type': 'application/json'
-      }
+      headers: this._headers
     })
-    .then(res => {
-      if(res.ok){
-        return res;
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })  
+    .then(res => this._getResponseData(res))  
   }
 
   _addLike(id){
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: 'PUT',
-      headers: {
-        authorization: '56bd9a91-126f-47c1-94b3-76e6f2e1aa35',
-        'Content-Type': 'application/json'
-      }
+      headers: this._headers
     })
-    .then(res => {
-      if(res.ok){
-        return res;
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })  
+    .then(res => this._getResponseData(res))  
   }
 
   toggleLike(status, id){

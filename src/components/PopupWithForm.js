@@ -5,6 +5,7 @@ export default class PopupWithForm extends Popup{
     super(selectorPopup);
     this._callback = callback;
     this._form = this._popup.querySelector(".form");
+    this._inputList = this._form.querySelectorAll('.form__field');
   }
 
   close = () => {
@@ -17,14 +18,29 @@ export default class PopupWithForm extends Popup{
     // this._form.querySelectorAll("input").forEach((element,index) => {
     //   if(data[index] !== undefined) element.value =  data[index];
     // })
-    this._formInput = this._form.querySelectorAll("input");
-    if(data.name !== undefined) this._formInput[0].value = data.name;
-    if(data.about !== undefined) this._formInput[1].value = data.about;
+    // this._formInput = this._form.querySelectorAll("input");
+    // if(data.name !== undefined) this._formInput[0].value = data.name;
+    // if(data.about !== undefined) this._formInput[1].value = data.about;
+    if(data){
+      this._inputList.forEach(input => {
+        input.value = data[input.name]
+      });
+    }
   }
 
-  _getInputValues(){
-    this._dataField = Array.from(this._form.querySelectorAll("input")).map(element => element.value)
-    return this._dataField
+  _getInputValues() {
+    // достаём все элементы полей
+    this._inputList = this._form.querySelectorAll('.form__field');
+    // создаём пустой объект
+    this._formValues = {};
+  
+    // добавляем в этот объект значения всех полей
+    this._inputList.forEach(input => {
+      this._formValues[input.name] = input.value;
+    });
+  
+    // возвращаем объект значений
+    return this._formValues;
   }
 
   setEventListeners(){

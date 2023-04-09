@@ -1,7 +1,8 @@
 export default class Card{
-  constructor(data, templateSelector, handleCardClick, handleBusketClick, handleLikeClick){
+  constructor(data, templateSelector, handleCardClick, handleBusketClick, handleLikeClick, handleUnlikeClick, userId){
     this._name = data.name;
     this._link = data.link;
+    this._userId = userId
     if(data.owner){
       this._idOwner = data.owner._id;
     }
@@ -16,6 +17,7 @@ export default class Card{
     this._handleCardClick = handleCardClick;
     this._handleBusketClick = handleBusketClick;
     this._handleLikeClick = handleLikeClick;
+    this._handleUnlikeClick = handleUnlikeClick
     // this._ownerLike = data.likes.some(element => {
     //   element._id === "6d139468d234cc10f1583d43"
     // })
@@ -39,7 +41,7 @@ export default class Card{
   _checkOwnerLike(){
     if(this._likesArray){
       for(let i = 0; i < this._likesArray.length;++i){
-        if(this._likesArray[i]._id === "6d139468d234cc10f1583d43"){
+        if(this._likesArray[i]._id === this._userId){
           return true
         }
       }
@@ -53,16 +55,20 @@ export default class Card{
 
   _like(){
     this._likeStatus = this._cardLike.classList.contains("card__like_active")
-    this._handleLikeClick(this._likeStatus, this._id)
-    if(!this._ownerLike && !this._likeStatus){
-      // this._counterLikes.textContent = ++this._countLikes;
-      ++this._counterLikes.textContent
+    if(this._likeStatus){
+      this._handleUnlikeClick(this._id)
+        .then(() => {
+          --this._counterLikes.textContent;
+          this._cardLike.classList.toggle("card__like_active");
+        })
     }
     else{
-      --this._counterLikes.textContent
-      // this._counterLikes.textContent = --this._countLikes;
+      this._handleLikeClick(this._id)
+        .then(() => {
+          ++this._counterLikes.textContent
+          this._cardLike.classList.toggle("card__like_active");
+        })
     }
-    this._cardLike.classList.toggle("card__like_active");
   }
 
   _removeCard(){
@@ -78,7 +84,6 @@ export default class Card{
     });
     this._cardTrash.addEventListener("click", () => {
       this._handleBusketClick(this)
-      // this._removeCard();
     });
   }
 
@@ -100,7 +105,7 @@ export default class Card{
       this._counterLikes.textContent = 0;
     }
     if(this._idOwner){
-      if(this._idOwner !== "6d139468d234cc10f1583d43"){
+      if(this._idOwner !== this._userId){
         this._cardTrash.remove()
       }
     }

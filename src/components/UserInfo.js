@@ -6,22 +6,22 @@ export default class UserInfo {
   }
 
   getUserInfo(){
-    if(this._name.textContent !== "" && this._about !== "" && this._avatar !== ""){
+    // if(this._name.textContent !== "" && this._about !== "" && this._avatar !== ""){
       return {name: this._name.textContent, about: this._about.textContent, avatar: this._avatar.src}
-    }
+    // }
   }
 
-  getUserAvatar(){
-    if(this._avatar.src !== ""){
-      return this._avatar.src
-    }
-  }
+  // getUserAvatar(){
+  //   if(this._avatar.src !== ""){
+  //     return this._avatar.src
+  //   }
+  // }
 
   setUserAvatar(avatar){
     this._avatar.src = avatar
   }
 
-  setUserInfo([name, about]){
+  setUserInfo({name, about}){
     this._name.textContent = name
     this._about.textContent = about
   }
