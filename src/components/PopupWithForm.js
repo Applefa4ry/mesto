@@ -6,6 +6,7 @@ export default class PopupWithForm extends Popup{
     this._callback = callback;
     this._form = this._popup.querySelector(".form");
     this._inputList = this._form.querySelectorAll('.form__field');
+    this._button = this._form.querySelector(".form__button-submit")
   }
 
   close = () => {
@@ -13,7 +14,7 @@ export default class PopupWithForm extends Popup{
     this._form.reset();
   }
 
-  open = (data) => {
+  open = () => {
     super.open();
     // this._form.querySelectorAll("input").forEach((element,index) => {
     //   if(data[index] !== undefined) element.value =  data[index];
@@ -21,6 +22,14 @@ export default class PopupWithForm extends Popup{
     // this._formInput = this._form.querySelectorAll("input");
     // if(data.name !== undefined) this._formInput[0].value = data.name;
     // if(data.about !== undefined) this._formInput[1].value = data.about;
+
+  }
+
+  setButtomText(text){
+    this._button.textContent = text
+  }
+
+  fillInput(data){
     if(data){
       this._inputList.forEach(input => {
         input.value = data[input.name]

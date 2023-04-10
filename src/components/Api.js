@@ -72,7 +72,7 @@ export default class Api {
     .then(res => this._getResponseData(res))   
   }
 
-  _deleteLike(id){
+  deleteLike(id){
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: 'DELETE',
       headers: this._headers
@@ -80,20 +80,11 @@ export default class Api {
     .then(res => this._getResponseData(res))  
   }
 
-  _addLike(id){
+  addLike(id){
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: 'PUT',
       headers: this._headers
     })
     .then(res => this._getResponseData(res))  
-  }
-
-  toggleLike(status, id){
-    if(status){
-      this._deleteLike(id);
-    }
-    else{
-      this._addLike(id);
-    }
   }
 }

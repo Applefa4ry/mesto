@@ -59,39 +59,40 @@ const cardSection = new Section({renderer: createCard}, ".cards")
 function handleFormEditProfileSubmit (data, evt) {
     evt.preventDefault();
     console.log(data)
-    evt.submitter.textContent = "Сохранение...";
+    popupEditProfile.setButtomText("Сохранение...");
     api.setUserInfoOnServer(data)
       .then(() => {
         userInfo.setUserInfo(data);
         popupEditProfile.close()
       })
       .catch(err => console.log(`Ошибка ${err}`))
-      .finally(() => evt.submitter.textContent = "Сохранить");
+      .finally(() => popupEditProfile.setButtomText("Сохранить"));
     
 }
 
 function editAvatar(avatar, evt){
   evt.preventDefault();
   console.log(avatar)
-  evt.submitter.textContent = "Сохранение..."
+  popupEditAvatar.setButtomText("Сохранение...");
   api.setUserAvatarOnServer(avatar.link)
-    .then(() => {
-      userInfo.setUserAvatar(avatar.link)
+    .then((res) => {
+      console.log(res)
+      userInfo.setUserAvatar(res.avatar)
       popupEditAvatar.close()
     })
     .catch(err => console.log(`Ошибка ${err}`))
-    .finally(() => evt.submitter.textContent = "Сохранить")
+    .finally(() => popupEditAvatar.setButtomText("Сохранить"))
 }
 
 function createCard(cardData){
-  const card = new Card(cardData, "#card-template", popupWithImage.open.bind(popupWithImage), clarifyDeletion, api._addLike.bind(api),api._deleteLike.bind(api), userServerInfo.id);
+  const card = new Card(cardData, "#card-template", popupWithImage.open.bind(popupWithImage), clarifyDeletion, handleLikeClick, userServerInfo.id);
   const cardElement = card.generateCard();
   return cardElement;
 }
 
 function addCard(data, evt){
   evt.preventDefault();
-  evt.submitter.textContent = "Создание..."
+  popupNewPlace.setButtomText("Создание...");
   api.addNewCard(data)
     .then(data => {
       const cardElement = createCard(data);
@@ -100,16 +101,18 @@ function addCard(data, evt){
     .then(() => popupNewPlace.close())
     .catch(err => console.log(`Ошибка ${err}`))
     .finally(() => {
-      evt.submitter.textContent = "Создать"
+      popupNewPlace.setButtomText("Создать")
     })
 }
 
 function deleteCard(card, evt){
   evt.preventDefault();
   api.deleteCard(card._id)
+  .then(() => {
+    card._removeCard();
+    popupDelete.close();
+  })
   .catch(err => console.log(`Ошибка ${err}`));
-  card._removeCard();
-  popupDelete.close();
 }
 
 function clarifyDeletion(card){
@@ -117,7 +120,20 @@ function clarifyDeletion(card){
   popupDelete.setCard(card);
 }
 
-editButton.addEventListener("click", () => popupEditProfile.open(userInfo.getUserInfo()));
+function handleLikeClick(card,status, id){
+  if(status)
+    api.addLike(id)
+      .then(() => card.setLike())
+  else{
+    api.addLike(id)
+    .then(() => card.setLike())
+  }
+}
+
+editButton.addEventListener("click", () => {
+  popupEditProfile.fillInput(userInfo.getUserInfo())
+  popupEditProfile.open()
+});
 
 addButton.addEventListener("click", () => {
   validatorAddCard.resetValidation();

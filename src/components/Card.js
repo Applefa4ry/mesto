@@ -1,5 +1,5 @@
 export default class Card{
-  constructor(data, templateSelector, handleCardClick, handleBusketClick, handleLikeClick, handleUnlikeClick, userId){
+  constructor(data, templateSelector, handleCardClick, handleBusketClick, handleLikeClick, userId){
     this._name = data.name;
     this._link = data.link;
     this._userId = userId
@@ -17,7 +17,6 @@ export default class Card{
     this._handleCardClick = handleCardClick;
     this._handleBusketClick = handleBusketClick;
     this._handleLikeClick = handleLikeClick;
-    this._handleUnlikeClick = handleUnlikeClick
     // this._ownerLike = data.likes.some(element => {
     //   element._id === "6d139468d234cc10f1583d43"
     // })
@@ -53,21 +52,22 @@ export default class Card{
     return this._id;
   }
 
-  _like(){
+  getLikeStatus(){
     this._likeStatus = this._cardLike.classList.contains("card__like_active")
+  } 
+
+  setLike(){
+    this._like();
+  }
+
+  _like(){
     if(this._likeStatus){
-      this._handleUnlikeClick(this._id)
-        .then(() => {
-          --this._counterLikes.textContent;
-          this._cardLike.classList.toggle("card__like_active");
-        })
+        --this._counterLikes.textContent;
+        this._cardLike.classList.toggle("card__like_active");
     }
     else{
-      this._handleLikeClick(this._id)
-        .then(() => {
-          ++this._counterLikes.textContent
-          this._cardLike.classList.toggle("card__like_active");
-        })
+        ++this._counterLikes.textContent
+        this._cardLike.classList.toggle("card__like_active");
     }
   }
 
@@ -80,7 +80,7 @@ export default class Card{
       this._handleCardClick(this._name, this._link);
     });
     this._cardLike.addEventListener("click", () => {
-      this._like();
+      this._handleLikeClick(this, this.getLikeStatus(), this.getIdCard())
     });
     this._cardTrash.addEventListener("click", () => {
       this._handleBusketClick(this)
