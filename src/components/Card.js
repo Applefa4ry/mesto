@@ -80,7 +80,8 @@ export default class Card{
       this._handleCardClick(this._name, this._link);
     });
     this._cardLike.addEventListener("click", () => {
-      this._handleLikeClick(this, this.getLikeStatus(), this.getIdCard())
+      this.getLikeStatus()
+      this._handleLikeClick(this, this._likeStatus, this.getIdCard())
     });
     this._cardTrash.addEventListener("click", () => {
       this._handleBusketClick(this)
