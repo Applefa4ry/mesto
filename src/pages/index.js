@@ -122,7 +122,7 @@ function clarifyDeletion(card){
 
 function handleLikeClick(card,status, id){
   if(status)
-    api.addLike(id)
+    api.deleteLike(id)
       .then(() => card.setLike())
   else{
     api.addLike(id)
