@@ -71,7 +71,7 @@ export default class Card{
     }
   }
 
-  _removeCard(){
+  removeCard(){
     this._element.remove();
   }
 
