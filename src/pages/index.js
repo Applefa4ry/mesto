@@ -109,7 +109,7 @@ function deleteCard(card, evt){
   evt.preventDefault();
   api.deleteCard(card._id)
   .then(() => {
-    card._removeCard();
+    card.removeCard();
     popupDelete.close();
   })
   .catch(err => console.log(`Ошибка ${err}`));
@@ -122,7 +122,7 @@ function clarifyDeletion(card){
 
 function handleLikeClick(card,status, id){
   if(status)
-    api.addLike(id)
+    api.deleteLike(id)
       .then(() => card.setLike())
   else{
     api.addLike(id)
